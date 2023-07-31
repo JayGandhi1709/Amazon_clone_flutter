@@ -4,7 +4,6 @@ const dbURI = process.env.DATABASE;
 
 mongoose
   .connect(dbURI, {
-  // .connect('mongodb+srv://jay:jay@amazonclone.8j2kkuy.mongodb.net/', {
     useNewUrlParser: true,
     // useCreateIndex: true,
     useUnifiedTopology: true,
