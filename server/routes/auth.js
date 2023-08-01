@@ -10,7 +10,7 @@ const {
 } = require("../controller/authController");
 
 // Middleware
-const auth = require("../middleware/auth");
+const userAuth = require("../middleware/userAuth");
 
 // MIDDLEWARE
 // CLIENT -> MIDDLEWARE -> SERVER -> CLIENT
@@ -24,6 +24,6 @@ authRouter.post("/api/signin", user_signin);
 authRouter.post("/tokenIsValid", tokenIsValid);
 
 // GET
-authRouter.get("/", auth, getUser);
+authRouter.get("/", userAuth, getUser);
 
 module.exports = authRouter;

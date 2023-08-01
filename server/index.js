@@ -7,6 +7,7 @@ const cors = require("cors");
 // IMPORTS FORM OTHER FILES
 dotenv.config({ path: "./config.env" });
 const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
 
 // INIT
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // Link Routes files
 app.use(authRouter);
+app.use(adminRouter);
 
 
 // Creating API

@@ -17,11 +17,6 @@ class CarouselImage extends StatelessWidget {
         );
       },
       options: CarouselOptions(
-        autoPlay: true,
-        initialPage: 0,
-        enableInfiniteScroll :true,
-        pauseAutoPlayInFiniteScroll: true,
-        reverse: false,
         viewportFraction: 1,
         height: 200,
       ),
