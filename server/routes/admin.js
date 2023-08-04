@@ -6,4 +6,7 @@ const adminRoute = express.Router();
 
 adminRoute.post("/admin/add-product",adminAuth,add_product);
 
+// GET
+adminRoute.get("/admin/get-product",adminAuth,add_product);
+
 module.exports = adminRoute;

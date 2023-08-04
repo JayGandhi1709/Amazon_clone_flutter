@@ -8,6 +8,7 @@ const cors = require("cors");
 dotenv.config({ path: "./config.env" });
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
+const productRouter = require("./routes/product");
 
 // INIT
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.json());
 // Link Routes files
 app.use(authRouter);
 app.use(adminRouter);
+app.use(productRouter);
 
 
 // Creating API

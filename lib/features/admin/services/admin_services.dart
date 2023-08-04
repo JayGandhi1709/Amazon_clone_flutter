@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:convert';
 import 'dart:io';
 import 'package:amazon_clone/constants/error_handling.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
@@ -22,7 +25,7 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      final cloudinary = CloudinaryPublic("<_cloudName>", "<_uploadPreset>");
+      final cloudinary = CloudinaryPublic("dbmntpnti", "o6ioo5z8");
       List<String> imageUrls = [];
 
       for (var i = 0; i < images.length; i++) {
@@ -50,7 +53,6 @@ class AdminServices {
         body: product.toJson(),
       );
 
-      // ignore: use_build_context_synchronously
       httpErrorHandle(
           response: res,
           context: context,
@@ -63,5 +65,36 @@ class AdminServices {
     }
   }
 
-
+  // Get all the Products
+  Future<List> fetchAllProduct(BuildContext context) async {
+    final userProvider = Provider.of<UserProvider>(context,listen: false);
+    List<Product> productList = [];
+    try {
+      http.Response res = await http.get(
+        Uri.parse('$uri/admin/get-product'),
+        headers: <String, String>{
+          'content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token,
+        },
+      );
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (var i = 0; i < jsonDecode(res.body).length; i++) {
+            productList.add(
+              Product.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return productList;
+  }
 }

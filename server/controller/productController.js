@@ -5,15 +5,13 @@ const bcryptjs = require("bcryptjs");
 const { createToken, verifyToken } = require("../utils/createToken");
 
 // Import Modles
-// const Product = require("../models/product");
 const Product = require("../models/product");
 
-module.exports.add_product = async (req, res) => {
+module.exports.products = async (req, res) => {
+  const { category } = req.query;
   try {
-
-    const products = await Product.find({});
+    const products = await Product.find({ category });
     res.json(products);
-    
   } catch (error) {
     res.status(500).json({ error: e.toString() });
   }
