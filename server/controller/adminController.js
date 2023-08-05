@@ -10,11 +10,19 @@ const Product = require("../models/product");
 
 module.exports.add_product = async (req, res) => {
   try {
-
     const products = await Product.find({});
     res.json(products);
-    
   } catch (error) {
-    res.status(500).json({ error: e.toString() });
+    res.status(500).json({ error: error.toString() });
+  }
+};
+
+module.exports.delete_product = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const products = await Product.deleteOne({ _id:id });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.toString() });
   }
 };
