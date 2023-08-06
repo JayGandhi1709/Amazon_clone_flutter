@@ -11,22 +11,19 @@ import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 
-class ProductDetailsServices {
-  Future<void> addToCart({
+class CartServices {
+  Future<void> removeFromCart({
     required BuildContext context,
     required Product product,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/add-to-cart'),
+      http.Response res = await http.delete(
+        Uri.parse('$uri/api/remove-from-cart/${product.id}'),
         headers: <String, String>{
           'content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
         },
-        body: jsonEncode({
-          'id': product.id!,
-        }),
       );
       // ignore: use_build_context_synchronously
       httpErrorHandle(
@@ -43,34 +40,4 @@ class ProductDetailsServices {
       showSnackBar(context, e.toString());
     }
   }
-
-  Future<void> rateProduct({
-    required BuildContext context,
-    required Product product,
-    required double rating,
-  }) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/rate-product'),
-        headers: <String, String>{
-          'content-Type': 'application/json; charset=UTF-8',
-          'x-auth-token': userProvider.user.token,
-        },
-        body: jsonEncode({
-          'id': product.id!,
-          'rating': rating,
-        }),
-      );
-      // ignore: use_build_context_synchronously
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {},
-      );
-    } catch (e) {
-      showSnackBar(context, e.toString());
-    }
-  }
-
 }

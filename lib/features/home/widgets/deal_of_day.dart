@@ -1,4 +1,5 @@
 import 'package:amazon_clone/common/widgets/loader.dart';
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/home/services/home_services.dart';
 import 'package:amazon_clone/features/product_details/screens/product_details_screen.dart';
 import 'package:amazon_clone/models/product.dart';
@@ -64,8 +65,8 @@ class _DealOfDayState extends State<DealOfDay> {
                           alignment: Alignment.topLeft,
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            "₹ ${product!.price}",
-                            style: TextStyle(fontSize: 18),
+                            currencyFormat.format(product!.price),
+                            style: const TextStyle(fontSize: 18),
                           ),
                         ),
                         Container(
@@ -95,7 +96,7 @@ class _DealOfDayState extends State<DealOfDay> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(vertical: 15)
+                          padding: const EdgeInsets.symmetric(vertical: 15)
                               .copyWith(left: 15),
                           alignment: Alignment.topLeft,
                           child: Text(

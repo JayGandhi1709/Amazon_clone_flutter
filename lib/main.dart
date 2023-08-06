@@ -14,7 +14,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (context) => UserProvider(),
-        )
+        ),
       ],
       child: const MyApp(),
     ),

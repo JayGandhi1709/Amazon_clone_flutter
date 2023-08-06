@@ -35,6 +35,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       if (widget.product.rating![i].userId ==
           Provider.of<UserProvider>(context, listen: false).user.id) {
         myRating = widget.product.rating![i].rating;
+        print(myRating);
       }
     }
     if (totalRating != 0) {
@@ -44,6 +45,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
+  void addToCart() {
+    productDetailsServices.addToCart(context: context, product: widget.product);
   }
 
   @override
@@ -171,7 +176,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(
-                      text: "₹ ${widget.product.price}",
+                      text: currencyFormat.format(widget.product.price),
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.red,
@@ -204,7 +209,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 text: "Add to Cart",
                 backgroundColor: const Color.fromRGBO(254, 216, 19, 1),
                 textColor: Colors.black,
-                onTap: () {},
+                onTap: addToCart,
               ),
             ),
             const SizedBox(height: 10),

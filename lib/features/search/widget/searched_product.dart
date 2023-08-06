@@ -1,3 +1,4 @@
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/starts.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
@@ -54,7 +55,7 @@ class SearchedProduct extends StatelessWidget {
                     width: 230,
                     padding: const EdgeInsets.only(left: 10, top: 5),
                     child: Text(
-                      "₹ ${product.price}",
+                      currencyFormat.format(product.price),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(

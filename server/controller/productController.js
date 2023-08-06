@@ -5,15 +5,15 @@ const bcryptjs = require("bcryptjs");
 const { createToken, verifyToken } = require("../utils/createToken");
 
 // Import Modles
-const Product = require("../models/product");
+const {Product} = require("../models/product");
 
 module.exports.products = async (req, res) => {
   const { category } = req.query;
   try {
     const products = await Product.find({ category });
     res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: error.toString() });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 };
 
@@ -24,8 +24,8 @@ module.exports.search_product = async (req, res) => {
       name: { $regex: searchQuery, $options: "i" },
     });
     res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: error.toString() });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 };
 
@@ -49,8 +49,8 @@ module.exports.rate_product = async (req, res) => {
     product.ratings.push(ratingSchema);
     product = await product.save();
     res.json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.toString() });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 };
 
@@ -75,7 +75,7 @@ module.exports.deal_of_day = async (req, res) => {
     });
 
     res.json(products[0]);
-  } catch (error) {
-    res.status(500).json({ error: error.toString() });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 };

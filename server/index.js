@@ -3,11 +3,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-
 // IMPORTS FORM OTHER FILES
 dotenv.config({ path: "./config.env" });
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
+const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 
 // INIT
@@ -23,12 +23,11 @@ require("./db/conn");
 app.use(cors());
 app.use(express.json());
 
-
 // Link Routes files
 app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
-
+app.use(userRouter);
 
 // Creating API
 // app.get("/", (req, res) => {
