@@ -12,6 +12,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,15 +52,15 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
         ),
       ),
-    body: const Column(
-      children: [
-        BelowAppBar(),
-        SizedBox(height: 10),
-        TopButtons(),
-        SizedBox(height: 20),
-        Orders(),
-      ],
-    ),
+      body: const Column(
+        children: [
+          BelowAppBar(),
+          SizedBox(height: 10),
+          TopButtons(),
+          SizedBox(height: 20),
+          Orders(),
+        ],
+      ),
     );
   }
 }

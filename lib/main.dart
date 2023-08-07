@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Amazon Clone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
         colorScheme: const ColorScheme.light(
           primary: GlobalVariables.secondaryColor,
