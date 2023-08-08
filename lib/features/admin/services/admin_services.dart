@@ -29,7 +29,7 @@ class AdminServices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      final cloudinary = CloudinaryPublic("dbmntpnti", "o6ioo5z8");
+      final cloudinary = CloudinaryPublic("********", "******");
       List<String> imageUrls = [];
 
       for (var i = 0; i < images.length; i++) {
