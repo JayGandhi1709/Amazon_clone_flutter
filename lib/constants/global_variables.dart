@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-// String uri = 'http://localhost:5000';
-String uri = 'http://192.168.1.7:5000';
+String uri = 'http://<REPLACE WITH YOUR IP>:5000';
 
 NumberFormat currencyFormat = NumberFormat.currency(locale: 'HI',symbol: '₹ ');
 
