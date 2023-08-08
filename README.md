@@ -15,8 +15,8 @@ Full Stack Working Amazon Clone app with Admin Dashboard using Flutter and Backe
 * Update Cloud name and Upload preset at ``` lib -> features -> admin -> services -> admin_services.dart ```
 * ![image](https://user-images.githubusercontent.com/3157579/178201535-ca05d27a-4b32-4586-b2eb-fdbee71447f0.png)
 * Create MongoDB at https://cloud.mongodb.com/  and Add your connection string into your application code
-* ```
-  project -> server -> config.env -> 
+* project -> server -> config.env -> 
+ ```
   DATABASE = "mongodb+srv://***" // Please Enter your MongoDB URL 
   PORT = 5000 // Please Enter Port 
   SECRET_KEY = *********** // Please Any SECRET_KEY
